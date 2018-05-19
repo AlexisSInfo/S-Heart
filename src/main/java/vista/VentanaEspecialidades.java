@@ -2,13 +2,12 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class VentanaEspecialidades extends JFrame{
     private JLabel titulo;
-    private JButton btnVolver;
+    private PanelBotonesInferior botones;
     private PanelBotonesAlargo especialidades;
 
     public VentanaEspecialidades() {
@@ -25,8 +24,8 @@ public class VentanaEspecialidades extends JFrame{
         this.add(titulo, BorderLayout.NORTH);
         this.especialidades = new PanelBotonesAlargo();
         this.add(especialidades, BorderLayout.CENTER);
-        this.btnVolver = new JButton("Volver");
-        this.add(btnVolver, BorderLayout.SOUTH);
+        this.botones = new PanelBotonesInferior();
+        this.add(botones, BorderLayout.SOUTH);
                 
         this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

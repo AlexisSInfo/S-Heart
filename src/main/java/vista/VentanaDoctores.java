@@ -2,14 +2,13 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 public class VentanaDoctores extends JFrame{
     private JLabel titulo;
-    private JButton btnVolver;
+    private PanelBotonesInferior botones;
     private PanelBotonesAlargo pacientes;
     
     public VentanaDoctores() {
@@ -26,8 +25,8 @@ public class VentanaDoctores extends JFrame{
         this.add(titulo, BorderLayout.NORTH);
         this.pacientes = new PanelBotonesAlargo();
         this.add(pacientes, BorderLayout.CENTER);
-        this.btnVolver = new JButton("Volver");
-        this.add(btnVolver, BorderLayout.SOUTH);
+        this.botones = new PanelBotonesInferior();
+        this.add(botones, BorderLayout.SOUTH);
         
         this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
