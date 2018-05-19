@@ -20,9 +20,9 @@ public class VentanaInicial extends JFrame{
         this.add(panelmagen, BorderLayout.NORTH);
         this.panelBotones = new PanelBotonesVentanaInicial();
         this.add(panelBotones, BorderLayout.SOUTH);
+                
+        this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
-        
         this.setVisible(true);
     }
 }
