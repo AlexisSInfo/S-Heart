@@ -7,5 +7,6 @@ public class Launcher {
         VentanaInicial ventanaInicial = new VentanaInicial();
         VentanaEspecialidades ventanaEps = new VentanaEspecialidades();
         VentanaDoctores ventanaDoc = new VentanaDoctores();
+        VentanaPacientes ventanaPaci = new VentanaPacientes();
     }
 }
