@@ -10,22 +10,22 @@ import javax.swing.JLabel;
 public class VentanaDoctores extends JFrame implements ActionListener{
     private JLabel titulo;
     private PanelBotonesInferior botones;
-    private PanelBotonesAlargo pacientes;
+    private PanelBotonesDoctores doctores;
     
-    public VentanaDoctores() {
-        initComponent();
+    public VentanaDoctores(String especialidad) {
+        initComponent(especialidad);
     }
-    private void initComponent(){
+    private void initComponent(String especialidad){
         BorderLayout dist = new BorderLayout();
         this.setLayout(dist);
         this.setSize(300, 700);
         this.setTitle("S-Hearth");
         
-        this.titulo = new JLabel("   Doctores");
+        this.titulo = new JLabel("   Doctores || "+especialidad);
         this.titulo.setFont(new Font("comic sans", titulo.getHeight()+30, titulo.getWidth()+30));
         this.add(titulo, BorderLayout.NORTH);
-        this.pacientes = new PanelBotonesAlargo();
-        this.add(pacientes, BorderLayout.CENTER);
+        this.doctores = new PanelBotonesDoctores(this);
+        this.add(doctores, BorderLayout.CENTER);
         this.botones = new PanelBotonesInferior();
         this.botones.btnEditar.addActionListener(this);
         this.botones.btnVolver.addActionListener(this);

@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 public class VentanaEspecialidades extends JFrame implements ActionListener{
     private JLabel titulo;
     private PanelBotonesInferior botones;
-    private PanelBotonesAlargo especialidades;
+    private PanelBotonesEspecialidades especialidades;
 
     public VentanaEspecialidades() {
         initComponent();
@@ -24,7 +24,7 @@ public class VentanaEspecialidades extends JFrame implements ActionListener{
         this.titulo = new JLabel("  Especialidades");
         this.titulo.setFont(new Font("comic sans", titulo.getHeight()+30, titulo.getWidth()+30));
         this.add(titulo, BorderLayout.NORTH);
-        this.especialidades = new PanelBotonesAlargo();
+        this.especialidades = new PanelBotonesEspecialidades(this);
         this.add(especialidades, BorderLayout.CENTER);
         this.botones = new PanelBotonesInferior();
         this.botones.btnEditar.addActionListener(this);
