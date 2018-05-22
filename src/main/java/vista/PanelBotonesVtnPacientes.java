@@ -47,4 +47,16 @@ public class PanelBotonesVtnPacientes extends JPanel{
         this.add (btnVolver, constraints); 
         constraints.weighty = 0.0;
     }
+
+    public JButton getBtnVer() {
+        return btnVer;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public JButton getBtnVolver() {
+        return btnVolver;
+    }
 }

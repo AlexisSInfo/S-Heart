@@ -2,10 +2,12 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class VentanaEspecialidades extends JFrame{
+public class VentanaEspecialidades extends JFrame implements ActionListener{
     private JLabel titulo;
     private PanelBotonesInferior botones;
     private PanelBotonesAlargo especialidades;
@@ -25,10 +27,22 @@ public class VentanaEspecialidades extends JFrame{
         this.especialidades = new PanelBotonesAlargo();
         this.add(especialidades, BorderLayout.CENTER);
         this.botones = new PanelBotonesInferior();
+        this.botones.btnEditar.addActionListener(this);
+        this.botones.btnVolver.addActionListener(this);
         this.add(botones, BorderLayout.SOUTH);
                 
         this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == botones.btnEditar){
+            //equisde
+        }else if(e.getSource()== botones.btnVolver){
+            VentanaInicial inicio = new VentanaInicial();
+            this.dispose();
+        }
     }
 }

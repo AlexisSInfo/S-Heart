@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class PanelBotonesVentanaInicial extends JPanel{
-    private JButton botonPacientes, botonDoctores;
+    public JButton botonPacientes, botonDoctores;
 
     public PanelBotonesVentanaInicial() {
         initComponent();

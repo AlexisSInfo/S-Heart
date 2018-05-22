@@ -3,11 +3,13 @@ package vista;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class PanelBotonesAlargo extends JPanel{
+public class PanelBotonesAlargo extends JPanel implements ActionListener{
     private ArrayList<JButton> especialidades;
 
     public PanelBotonesAlargo() {
@@ -41,5 +43,10 @@ public class PanelBotonesAlargo extends JPanel{
             constraints.weighty = 0.2;
             this.add (especialidades.get(i), constraints);
         }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        
     }
 }

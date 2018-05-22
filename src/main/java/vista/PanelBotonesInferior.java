@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 
 public class PanelBotonesInferior extends JPanel{
-    private JButton btnEditar, btnVolver;
+    public JButton btnEditar, btnVolver;
 
     public PanelBotonesInferior() {
         initComponent();
