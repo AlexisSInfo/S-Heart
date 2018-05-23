@@ -6,12 +6,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 public class VentanaPacientes extends JFrame implements ActionListener{
    private JComboBox<String> pacientes;
    private PanelBotonesVtnPacientes botones;
-   private JButton btnver, btnborrar, btnvolver;
+   private JButton btnver, btnborrar, btnvolver, btnanadir;
 
     public VentanaPacientes() {
         initComponent();
@@ -32,6 +33,7 @@ public class VentanaPacientes extends JFrame implements ActionListener{
         btnver = botones.getBtnVer(); btnver.addActionListener(this);
         btnborrar = botones.getBtnEliminar(); btnborrar.addActionListener(this);
         btnvolver = botones.getBtnVolver(); btnvolver.addActionListener(this);
+        btnanadir = botones.getBtnAnadir(); btnanadir.addActionListener(this);
         this.add(botones, BorderLayout.SOUTH);
         
         this.setResizable(false);
@@ -44,9 +46,16 @@ public class VentanaPacientes extends JFrame implements ActionListener{
         if (e.getSource()== btnver) {
             //equisde
         }else if(e.getSource()== btnborrar){
-            //equisde2
+            int selectedOption = JOptionPane.showConfirmDialog(null, "¿Quieres eliminar al pasiente "+pacientes.getSelectedItem()+"?", 
+                    "Eliminar pasiente", JOptionPane.YES_NO_OPTION); 
+            if (selectedOption == JOptionPane.YES_OPTION) {
+                System.out.println("boton borrar presionado");
+            }
         }else if(e.getSource() == btnvolver){
             VentanaInicial inicio = new VentanaInicial();
+            this.dispose();
+        }else if(e.getSource()== btnanadir){
+            VentanaAnadirPaciente anadir = new VentanaAnadirPaciente();
             this.dispose();
         }
     }
