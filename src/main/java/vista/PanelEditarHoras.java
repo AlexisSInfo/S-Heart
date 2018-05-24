@@ -1,25 +1,20 @@
 package vista;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class PanelHoras extends JPanel implements ActionListener {
+public class PanelEditarHoras extends JPanel implements ActionListener {
 
     private ArrayList<JButton> horas;
-    private JFrame padre;
-    private JButton volver;
 
-    public PanelHoras(JFrame padre) {
-        this.padre = padre;
+    public PanelEditarHoras() {
         initComponent();
-
     }
 
     private void initComponent() {
@@ -28,6 +23,7 @@ public class PanelHoras extends JPanel implements ActionListener {
             JButton boton = new JButton(i + ":00");
             boton.setName(String.valueOf(i));
             boton.addActionListener(this);
+            boton.setBackground(Color.cyan);
             this.horas.add(boton);
         }
         GridBagConstraints constraints = new GridBagConstraints();
@@ -48,52 +44,40 @@ public class PanelHoras extends JPanel implements ActionListener {
         if (ae.getSource() instanceof JButton) {
 
             if (((JButton) ae.getSource()).getName().equals(String.valueOf(9))) {
-                opciones(9);
+                cambiarEstadoHora(0);
             } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(10))) {
-                opciones(10);
+                cambiarEstadoHora(1);
             } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(11))) {
-                opciones(11);
+                cambiarEstadoHora(2);
             } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(12))) {
-                opciones(12);
+                cambiarEstadoHora(3);
             } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(13))) {
-                opciones(13);
+                cambiarEstadoHora(4);
             } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(14))) {
-                opciones(14);
+                cambiarEstadoHora(5);
             } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(15))) {
-                opciones(15);
+                cambiarEstadoHora(6);
             } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(16))) {
-                opciones(16);
+                cambiarEstadoHora(7);
             } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(17))) {
-                opciones(17);
+                cambiarEstadoHora(8);
             } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(18))) {
-                opciones(18);
+                cambiarEstadoHora(9);
             } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(19))) {
-                opciones(19);
+                cambiarEstadoHora(10);
             }
         }
     }
 
-    private void opciones(int hora) {
-        String[] buttons = {"Ver Cita","Añadir cita", "Eliminar cita", "Cancelar"};
-        int opcion = JOptionPane.showOptionDialog(null, "¿Que Desea Hacer?",
-                "Seleccionar accion || "+hora+":00", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, buttons, buttons[2]);
-        switch (opcion) {
-            case 0:
-                VentanaVerCita cita = new VentanaVerCita();
-                padre.dispose();
-                break;
-            case 1:
-                System.out.println(hora);
-                VentanaAnadirCita anadir = new VentanaAnadirCita();
-                break;
-            case 2:
-                int opcion1 = JOptionPane.showConfirmDialog(null, "¿Estas Seguro que quieres eliminar la cita de las "+hora+":00?",
-                        "Eliminar cita", JOptionPane.YES_NO_OPTION);
-                if (opcion1 == JOptionPane.YES_OPTION) {
-                    System.out.println("eliminado");
-                }   break;
-            default:
-                break;
+    public void cambiarEstadoHora(int hora) {
+        if (this.horas.get(hora).getBackground() == Color.cyan) {
+            JButton boton = this.horas.get(hora);
+            boton.setBackground(Color.red);
+            this.horas.set(hora, boton);
+        } else if (this.horas.get(hora).getBackground() == Color.red) {
+            JButton boton = this.horas.get(hora);
+            boton.setBackground(Color.cyan);
+            this.horas.set(hora, boton);
         }
     }
 }

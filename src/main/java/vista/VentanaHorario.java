@@ -1,14 +1,17 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class VentanaHorario extends JFrame implements ActionListener{
     private PanelHoras horas;
-    private JButton volver;
+    private JButton volver, editar;
+    private JPanel panel;
 
     public VentanaHorario() {
         initComponent();
@@ -22,7 +25,13 @@ public class VentanaHorario extends JFrame implements ActionListener{
         
         this.volver=new JButton("Volver");
         this.volver.addActionListener(this);
-        this.add(volver, BorderLayout.SOUTH);
+        this.editar=new JButton("Editar");
+        this.editar.addActionListener(this);
+        this.panel = new JPanel();
+        this.panel.setLayout(new FlowLayout());
+        this.panel.add(editar);
+        this.panel.add(volver);
+        this.add(panel, BorderLayout.SOUTH);
         this.horas = new PanelHoras(this);
         this.add(horas, BorderLayout.CENTER);
         
@@ -42,6 +51,9 @@ public class VentanaHorario extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource()==volver){
             VentanaCalendario calendario = new VentanaCalendario("");
+            this.dispose();
+        }else if(ae.getSource()== editar){
+            VentanaEditarHoras horas = new VentanaEditarHoras();
             this.dispose();
         }
     }
