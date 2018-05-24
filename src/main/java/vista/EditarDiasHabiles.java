@@ -15,7 +15,7 @@ public class EditarDiasHabiles extends JFrame implements ActionListener{
     private void initComponent(){
         BorderLayout dist = new BorderLayout();
         this.setLayout(dist);
-        this.setSize(300, 700);
+        this.setSize(300, 150);
         this.setTitle("S-Hearth");
         
         this.dias = new PanelComboBoxDias();
