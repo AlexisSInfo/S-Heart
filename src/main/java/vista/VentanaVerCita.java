@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 public class VentanaVerCita extends JFrame implements ActionListener{
     private PanelInfoCita info;
     private JButton aceptar;
-    private JPanel panelbtn;
+    private JPanel panelBtn;
 
     public VentanaVerCita() {
         initComponent();
@@ -24,11 +24,11 @@ public class VentanaVerCita extends JFrame implements ActionListener{
         
         this.info = new PanelInfoCita();
         this.add(info, BorderLayout.CENTER);
-        this.panelbtn = new JPanel();
+        this.panelBtn = new JPanel();
         this.aceptar = new JButton("Aceptar");
         this.aceptar.addActionListener(this);
-        this.panelbtn.add(aceptar);
-        this.add(panelbtn, BorderLayout.SOUTH);
+        this.panelBtn.add(aceptar);
+        this.add(panelBtn, BorderLayout.SOUTH);
         
         this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

@@ -40,12 +40,6 @@ public class VentanaHorario extends JFrame implements ActionListener{
         this.setVisible(true);
     }
     
-    public JButton getVolver(){
-        return volver;
-    }
-    protected void metodoVolver(){
-        System.out.println("A");
-    }
 
     @Override
     public void actionPerformed(ActionEvent ae) {

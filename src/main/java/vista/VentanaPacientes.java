@@ -12,7 +12,7 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 public class VentanaPacientes extends JFrame implements ActionListener{
    private JComboBox<String> pacientes;
    private PanelBotonesVtnPacientes botones;
-   private JButton btnver, btnborrar, btnvolver, btnanadir;
+   private JButton btnVer, btnBorrar, btnVolver, btnAnadir;
 
     public VentanaPacientes() {
         initComponent();
@@ -30,10 +30,10 @@ public class VentanaPacientes extends JFrame implements ActionListener{
         this.pacientes.addItem("tulio triviño");
         this.add(pacientes, BorderLayout.NORTH);
         this.botones = new PanelBotonesVtnPacientes();
-        btnver = botones.getBtnVer(); btnver.addActionListener(this);
-        btnborrar = botones.getBtnEliminar(); btnborrar.addActionListener(this);
-        btnvolver = botones.getBtnVolver(); btnvolver.addActionListener(this);
-        btnanadir = botones.getBtnAnadir(); btnanadir.addActionListener(this);
+        btnVer = botones.getBtnVer(); btnVer.addActionListener(this);
+        btnBorrar = botones.getBtnEliminar(); btnBorrar.addActionListener(this);
+        btnVolver = botones.getBtnVolver(); btnVolver.addActionListener(this);
+        btnAnadir = botones.getBtnAnadir(); btnAnadir.addActionListener(this);
         this.add(botones, BorderLayout.SOUTH);
         
         this.setResizable(false);
@@ -43,19 +43,19 @@ public class VentanaPacientes extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()== btnver) {
+        if (e.getSource()== btnVer) {
             VentanaVerPaciente paciente = new VentanaVerPaciente(this.pacientes.getSelectedItem()+"");
             this.dispose();
-        }else if(e.getSource()== btnborrar){
+        }else if(e.getSource()== btnBorrar){
             int selectedOption = JOptionPane.showConfirmDialog(null, "¿Quieres eliminar al pasiente "+pacientes.getSelectedItem()+"?", 
                     "Eliminar pasiente", JOptionPane.YES_NO_OPTION); 
             if (selectedOption == JOptionPane.YES_OPTION) {
                 
             }
-        }else if(e.getSource() == btnvolver){
+        }else if(e.getSource() == btnVolver){
             VentanaInicial inicio = new VentanaInicial();
             this.dispose();
-        }else if(e.getSource()== btnanadir){
+        }else if(e.getSource()== btnAnadir){
             VentanaAnadirPaciente anadir = new VentanaAnadirPaciente();
             this.dispose();
         }

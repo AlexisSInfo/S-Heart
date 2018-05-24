@@ -42,29 +42,10 @@ public class PanelEditarHoras extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() instanceof JButton) {
-
-            if (((JButton) ae.getSource()).getName().equals(String.valueOf(9))) {
-                cambiarEstadoHora(0);
-            } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(10))) {
-                cambiarEstadoHora(1);
-            } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(11))) {
-                cambiarEstadoHora(2);
-            } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(12))) {
-                cambiarEstadoHora(3);
-            } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(13))) {
-                cambiarEstadoHora(4);
-            } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(14))) {
-                cambiarEstadoHora(5);
-            } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(15))) {
-                cambiarEstadoHora(6);
-            } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(16))) {
-                cambiarEstadoHora(7);
-            } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(17))) {
-                cambiarEstadoHora(8);
-            } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(18))) {
-                cambiarEstadoHora(9);
-            } else if (((JButton) ae.getSource()).getName().equals(String.valueOf(19))) {
-                cambiarEstadoHora(10);
+            int value = Integer.valueOf(((JButton) ae.getSource()).getName());
+            
+            if (value>=9 || value<=19) {
+                cambiarEstadoHora(value-9);
             }
         }
     }
