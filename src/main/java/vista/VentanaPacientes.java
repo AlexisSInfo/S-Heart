@@ -44,12 +44,13 @@ public class VentanaPacientes extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()== btnver) {
-            //equisde
+            VentanaVerPaciente paciente = new VentanaVerPaciente(this.pacientes.getSelectedItem()+"");
+            this.dispose();
         }else if(e.getSource()== btnborrar){
             int selectedOption = JOptionPane.showConfirmDialog(null, "¿Quieres eliminar al pasiente "+pacientes.getSelectedItem()+"?", 
                     "Eliminar pasiente", JOptionPane.YES_NO_OPTION); 
             if (selectedOption == JOptionPane.YES_OPTION) {
-                System.out.println("boton borrar presionado");
+                
             }
         }else if(e.getSource() == btnvolver){
             VentanaInicial inicio = new VentanaInicial();

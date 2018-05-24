@@ -6,26 +6,27 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class VentanaAnadirPaciente extends JFrame implements ActionListener{
-    private PanelBtnAnadirPaciente botones;
+public class VentanaVerPaciente extends JFrame implements ActionListener{
     private PanelTxtAnadirPaciente texto;
-    private JButton anadir, cancelar;
-    
-    public VentanaAnadirPaciente() {
-        initComponent();
+    private JButton volver;
+
+    public VentanaVerPaciente(String paciente) {
+        initComponent(paciente);
     }
-    private void initComponent(){
+    
+    private void initComponent(String paciente){
         BorderLayout dist = new BorderLayout();
         this.setLayout(dist);
         this.setSize(500, 350);
         this.setTitle("S-Hearth");
         
         this.texto = new PanelTxtAnadirPaciente();
+        this.texto.desactivar();
+        this.texto.escribir(paciente, "", "", "");
         this.add(texto, BorderLayout.NORTH);
-        this.botones = new PanelBtnAnadirPaciente();
-        this.anadir = this.botones.getBtnAnadir(); this.anadir.addActionListener(this);
-        this.cancelar = this.botones.getBtnCancelar(); this.cancelar.addActionListener(this);
-        this.add(botones, BorderLayout.SOUTH);
+        this.volver = new JButton("Volver");
+        this.volver.addActionListener(this);
+        this.add(volver);
         
         this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -34,9 +35,7 @@ public class VentanaAnadirPaciente extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == anadir){
-            System.out.println("añadido");
-        }else if(ae.getSource()==cancelar){
+        if (ae.getSource() == volver){
             VentanaPacientes pacientes = new VentanaPacientes();
             this.dispose();
         }

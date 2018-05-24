@@ -17,7 +17,7 @@ public class PanelBtnAnadirPaciente extends JPanel{
         this.setLayout(dist);
         GridBagConstraints constraints = new GridBagConstraints();
         
-        this.btnAnadir = new JButton("Ver");
+        this.btnAnadir = new JButton("Añadir");
         constraints.gridx = 1;
         constraints.gridy = 0;
         constraints.gridwidth = 1;
@@ -27,7 +27,7 @@ public class PanelBtnAnadirPaciente extends JPanel{
         this.add (btnAnadir, constraints); 
         constraints.weighty = 0.0;
         
-        this.btnCancelar = new JButton("Eliminar");
+        this.btnCancelar = new JButton("Cancelar");
         constraints.gridx = 3;
         constraints.gridy = 0;
         constraints.gridwidth = 1;
@@ -37,4 +37,13 @@ public class PanelBtnAnadirPaciente extends JPanel{
         this.add (btnCancelar, constraints); 
         constraints.weighty = 0.0;
     }
+
+    public JButton getBtnAnadir() {
+        return btnAnadir;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+    
 }

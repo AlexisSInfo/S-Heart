@@ -27,7 +27,7 @@ public class VentanaDoctores extends JFrame implements ActionListener{
         this.doctores = new PanelBotonesDoctores(this);
         this.add(doctores, BorderLayout.CENTER);
         this.botones = new PanelBotonesInferior();
-        this.botones.btnEditar.addActionListener(this);
+        this.botones.btnAgregar.addActionListener(this);
         this.botones.btnVolver.addActionListener(this);
         this.add(botones, BorderLayout.SOUTH);
         
@@ -37,7 +37,7 @@ public class VentanaDoctores extends JFrame implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == botones.btnEditar){
+        if(e.getSource() == botones.btnAgregar){
             //equisde
         }else if(e.getSource()== botones.btnVolver){
             VentanaEspecialidades especialidades = new VentanaEspecialidades();

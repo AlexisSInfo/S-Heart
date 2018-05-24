@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 
 public class PanelBotonesInferior extends JPanel{
-    public JButton btnEditar, btnVolver;
+    public JButton btnAgregar, btnVolver;
 
     public PanelBotonesInferior() {
         initComponent();
@@ -15,8 +15,8 @@ public class PanelBotonesInferior extends JPanel{
     private void initComponent(){
         BorderLayout dist = new BorderLayout();
         this.setLayout(dist);
-        this.btnEditar = new JButton("Editar");
-        this.add(btnEditar, BorderLayout.WEST);
+        this.btnAgregar = new JButton("agregar");
+        this.add(btnAgregar, BorderLayout.WEST);
         this.btnVolver = new JButton("Volver");
         this.add(btnVolver, BorderLayout.EAST);
     }
