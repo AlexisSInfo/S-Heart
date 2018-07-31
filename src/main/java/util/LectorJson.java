@@ -17,15 +17,15 @@ public class LectorJson {
 
     /**
      * Permite el almacenamiento de un conjunto de clientes
-     * @param clientes
+     * @param especialidades
      */
-    public static void almacenarClientes(ArrayList<String> clientes) {
+    public static void almacenarEspecialidades(ArrayList<String> especialidades) {
 
 
         Type listType = new TypeToken<List<String>>() {}.getType();
 
         Gson gson = new Gson();
-        String json = gson.toJson(clientes, listType);
+        String json = gson.toJson(especialidades, listType);
         //System.out.println(json);
 
         try (FileWriter file = new FileWriter(RUTA+NOMBRE)) {
@@ -41,7 +41,7 @@ public class LectorJson {
      * Obtiene las personas almacenadas en el archivo de texto json
      * @return
      */
-    public static ArrayList<String> recuperarClientes() {
+    public static ArrayList<String> recuperarEspecialidades() {
 
         Gson gson = new Gson();
         BufferedReader br = null;
@@ -51,56 +51,23 @@ public class LectorJson {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        ArrayList<String> clientes = gson.fromJson(br, new TypeToken<List<String>>(){}.getType());
+        ArrayList<String> especialidades = gson.fromJson(br, new TypeToken<List<String>>(){}.getType());
 
-        return clientes;
+        return especialidades;
     }
 
     public static boolean agregar(String cl){
         boolean agregado = false;
-        ArrayList<String> especialidades = recuperarClientes(), nuevaLista = new ArrayList<>();
-        for (int i = 0; i < especialidades.size(); i++) {
-            nuevaLista.add(especialidades.get(i));
+        ArrayList<String> especialidades = recuperarEspecialidades(), nuevaLista = new ArrayList<>();
+        for (String especialidad : especialidades) {
+            nuevaLista.add(especialidad);
         }
         if (cl != null) {
             nuevaLista.add(cl);
-            almacenarClientes(nuevaLista);
+            almacenarEspecialidades(nuevaLista);
             agregado = true;
         }
         return agregado;
     }
 
-    /*
-    public static String buscar(ArrayList<Especialidades> especialidades){
-        ArrayList<> clientes = recuperarClientes();
-        Cliente retornoCliente = null;
-
-        for (int i=0; i<clientes.size(); i++){
-            if (clientes.get(i).getRut().equals(rut)) {
-                retornoCliente = clientes.get(i);
-            }
-        }
-
-        return retornoCliente;
-    }
-
-    public static boolean eliminar (String rut){
-        ArrayList<Cliente> clientes = recuperarClientes(),
-                nuevaLista = new ArrayList<>();
-        boolean eliminado = false;
-
-        for (int i=0; i<clientes.size(); i++){
-            if (clientes.get(i).getRut().equals(rut)) {
-                for(int j=0; j<clientes.size(); j++){
-                    if (j!=i) {
-                        nuevaLista.add(clientes.get(j));
-                    }
-                }
-                almacenarClientes(nuevaLista);
-                eliminado = true;
-            }
-        }
-        return eliminado;
-    }
-    */
 }
