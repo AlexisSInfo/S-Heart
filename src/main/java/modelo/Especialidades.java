@@ -1,13 +1,12 @@
 package modelo;
 
 import java.util.ArrayList;
+import util.LectorJson;
 
 public class Especialidades {
-    ArrayList<String> especialidades;
+    private ArrayList<String> especialidades;
 
     public Especialidades(){
-        this.especialidades = new ArrayList<>();
-        //leer archivo especialidades
-
+        this.especialidades =LectorJson.recuperarEspecialidades();
     }
 }
