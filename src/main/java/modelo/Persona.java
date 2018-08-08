@@ -1,11 +1,11 @@
 package modelo;
 
 public class Persona {
-    private String[] nombres;
-    private String[] apellidos;
+    private String nombres;
+    private String apellidos;
     private String rut;
 
-    public Persona(String[] nombres, String[] apellidos, String rut) {
+    public Persona(String nombres, String apellidos, String rut) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.rut = rut;
@@ -15,19 +15,19 @@ public class Persona {
 
     }
 
-    public String[] getNombres() {
+    public String getNombres() {
         return nombres;
     }
 
-    public void setNombres(String[] nombres) {
+    public void setNombres(String nombres) {
         this.nombres = nombres;
     }
 
-    public String[] getApellidos() {
+    public String getApellidos() {
         return apellidos;
     }
 
-    public void setApellidos(String[] apellidos) {
+    public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 
@@ -38,4 +38,11 @@ public class Persona {
     public void setRut(String rut) {
         this.rut = rut;
     }
+
+    @Override
+    public String toString() {
+        return "nombres=" + nombres + ", apellidos=" + apellidos + ", rut=" + rut;
+    }
+    
+    
 }

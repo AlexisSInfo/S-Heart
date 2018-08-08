@@ -3,6 +3,7 @@ package util;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import modelo.Especialidades;
+import modelo.Paciente;
 
 import java.io.*;
 import java.lang.reflect.Array;
@@ -13,7 +14,9 @@ import java.util.List;
 public class LectorJson {
 
     private final static String RUTA = "data/";
-    private final static String NOMBRE = "especialidades.json";
+    private final static String NOMBREESP = "especialidades.json";
+    private final static String NOMBREPACIENTES = "pacientes.json";
+    private final static String NOMBREDOCTORES = "doctores.json";
 
     /**
      * Permite el almacenamiento de un conjunto de clientes
@@ -28,7 +31,7 @@ public class LectorJson {
         String json = gson.toJson(especialidades, listType);
         //System.out.println(json);
 
-        try (FileWriter file = new FileWriter(RUTA+NOMBRE)) {
+        try (FileWriter file = new FileWriter(RUTA+NOMBREESP)) {
             file.write(json);
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,7 +49,7 @@ public class LectorJson {
         Gson gson = new Gson();
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader(RUTA+NOMBRE));
+            br = new BufferedReader(new FileReader(RUTA+NOMBREESP));
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -56,7 +59,7 @@ public class LectorJson {
         return especialidades;
     }
 
-    public static boolean agregar(String cl){
+    public static boolean agregarEspecialidad(String cl){
         boolean agregado = false;
         ArrayList<String> especialidades = recuperarEspecialidades(), nuevaLista = new ArrayList<>();
         for (String especialidad : especialidades) {
@@ -69,5 +72,65 @@ public class LectorJson {
         }
         return agregado;
     }
+    
+    public static void almacenarPacientes(ArrayList<Paciente> pacientes) {
 
+
+        Type listType = new TypeToken<List<Paciente>>() {}.getType();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(pacientes, listType);
+        //System.out.println(json);
+
+        try (FileWriter file = new FileWriter(RUTA+NOMBREPACIENTES)) {
+            file.write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    
+    public static ArrayList<Paciente> recuperarPacientes() {
+
+        Gson gson = new Gson();
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(RUTA+NOMBREPACIENTES));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<Paciente> pacientes = gson.fromJson(br, new TypeToken<List<Paciente>>(){}.getType());
+
+        return pacientes;
+    }
+    
+    public static boolean agregarPaciente(Paciente nuevoPaciente){
+        boolean agregado = false;
+        ArrayList<Paciente> pacientes = recuperarPacientes(), nuevaLista = new ArrayList<>();
+        for (Paciente paciente : pacientes) {
+            nuevaLista.add(paciente);
+        }
+        if (pacientes != null) {
+            nuevaLista.add(nuevoPaciente);
+            almacenarPacientes(nuevaLista);
+            agregado = true;
+        }
+        nuevaLista.forEach(System.out::println);
+        return agregado;
+    }
+    
+    public static boolean eliminarPaciente(String rut){
+        boolean eliminado = false;
+        ArrayList<Paciente> pacientes = recuperarPacientes();
+        for (int i = 0; i < pacientes.size(); i++) {
+            if (pacientes.get(i).getRut().equals(rut)) {
+                pacientes.remove(i);
+                almacenarPacientes(pacientes);
+                eliminado = true;
+            }
+        }
+        return eliminado;
+    }
 }
