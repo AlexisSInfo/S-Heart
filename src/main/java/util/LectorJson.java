@@ -113,7 +113,10 @@ public class LectorJson {
         for (Paciente paciente : pacientes) {
             nuevaLista.add(paciente);
         }
-        if (pacientes != null) {
+        if (nuevoPaciente.getNombres().equals("") || nuevoPaciente.getApellidos().equals("")||nuevoPaciente.getRut().equals("")||nuevoPaciente.getContacto().equals("")) {
+            nuevoPaciente = null;
+        }
+        if (pacientes != null && nuevoPaciente!=null) {
             nuevaLista.add(nuevoPaciente);
             almacenarPacientes(nuevaLista);
             agregado = true;

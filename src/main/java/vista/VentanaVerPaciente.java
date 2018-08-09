@@ -22,7 +22,7 @@ public class VentanaVerPaciente extends JFrame implements ActionListener{
         
         this.texto = new PanelTxtAnadirPaciente();
         this.texto.desactivar();
-        this.texto.escribir(paciente, "", "", "");
+        this.texto.escribir(paciente,"" , "", "", "");
         this.add(texto, BorderLayout.NORTH);
         this.volver = new JButton("Volver");
         this.volver.addActionListener(this);
