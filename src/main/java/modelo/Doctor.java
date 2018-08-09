@@ -1,20 +1,20 @@
 package modelo;
 
 public class Doctor extends Persona{
-    private Especialidades especialidad;
+    private String especialidad;
     private Horario horario;
 
-    public Doctor(String nombres, String apellidos, String rut, Especialidades especialidad, Horario horario) {
+    public Doctor(String nombres, String apellidos, String rut, String especialidad, Horario horario) {
         super(nombres, apellidos, rut);
         this.especialidad = especialidad;
         this.horario = horario;
     }
 
-    public Especialidades getEspecialidad() {
+    public String getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(Especialidades especialidad) {
+    public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
 

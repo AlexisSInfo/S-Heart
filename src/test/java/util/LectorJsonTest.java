@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import modelo.Doctor;
+import modelo.Especialidades;
 import modelo.Paciente;
 import modelo.Visita;
 
@@ -50,7 +52,12 @@ public class LectorJsonTest {
         Paciente nuevoPaciente = new Paciente("Juan","Perez" , "11111111-1", "");
         Visita nuevaVisita = new Visita("consulta de rutina", "saludable", "hoy");
         nuevoPaciente.anadirHistoria(nuevaVisita);
+        Paciente nuevoPaciente1 = new Paciente("Juan","Perez" , "11111111-1", "");
+        Visita nuevaVisita1 = new Visita("consulta de rutina", "saludable", "hoy");
+        nuevoPaciente.anadirHistoria(nuevaVisita1);
         boolean obtenido = lector.agregarPaciente(nuevoPaciente);
+        lector.agregarPaciente(nuevoPaciente1);
+        
         assertEquals(true, obtenido);
         
     }
@@ -62,6 +69,13 @@ public class LectorJsonTest {
         nuevoPaciente.anadirHistoria(nuevaVisita);
         lector.agregarPaciente(nuevoPaciente);
         boolean obtenido = lector.eliminarPaciente("11111111-1");
+        assertEquals(true, obtenido);
+    }
+    
+    @Test
+    public void agregarDoctoresTest(){
+        Doctor nuevoDoctor = new Doctor("Mario", "Casas", "22222222-2", "cardiologo", null);
+        boolean obtenido = lector.agregarDoctor(nuevoDoctor);
         assertEquals(true, obtenido);
     }
 

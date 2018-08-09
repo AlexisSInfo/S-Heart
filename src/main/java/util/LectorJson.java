@@ -10,6 +10,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Doctor;
 
 public class LectorJson {
 
@@ -128,6 +129,67 @@ public class LectorJson {
             if (pacientes.get(i).getRut().equals(rut)) {
                 pacientes.remove(i);
                 almacenarPacientes(pacientes);
+                eliminado = true;
+            }
+        }
+        return eliminado;
+    }
+    
+    public static void almacenarDoctores(ArrayList<Doctor> Doctor) {
+
+
+        Type listType = new TypeToken<List<Doctor>>() {}.getType();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(Doctor, listType);
+        //System.out.println(json);
+
+        try (FileWriter file = new FileWriter(RUTA+NOMBREDOCTORES)) {
+            file.write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    
+    public static ArrayList<Doctor> recuperarDoctores() {
+
+        Gson gson = new Gson();
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(RUTA+NOMBREDOCTORES));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<Doctor> doctores = gson.fromJson(br, new TypeToken<List<Doctor>>(){}.getType());
+
+        return doctores;
+    }
+    
+    public static boolean agregarDoctor(Doctor nuevoDoctor){
+        boolean agregado = false;
+        ArrayList<Doctor> doctores = recuperarDoctores(), nuevaLista = new ArrayList<>();
+        for (Doctor doctor : doctores) {
+            nuevaLista.add(doctor);
+        }
+        if (doctores != null) {
+            nuevaLista.add(nuevoDoctor);
+            almacenarDoctores(nuevaLista);
+            agregado = true;
+        }
+        nuevaLista.forEach(System.out::println);
+        return agregado;
+    }
+    
+    public static boolean eliminarDoctor(String rut){
+        boolean eliminado = false;
+        ArrayList<Doctor> doctores = recuperarDoctores();
+        for (int i = 0; i < doctores.size(); i++) {
+            if (doctores.get(i).getRut().equals(rut)) {
+                doctores.remove(i);
+                almacenarDoctores(doctores);
                 eliminado = true;
             }
         }
